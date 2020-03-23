@@ -87,6 +87,7 @@ public class AccesoJDBC implements I_Acceso_Datos {
 
 			}
 		} catch (SQLException e) {
+			System.err.println("obtenerDepositos() AcessoJDBC");
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -115,6 +116,7 @@ public class AccesoJDBC implements I_Acceso_Datos {
 
 			}
 		} catch (SQLException e) {
+			System.err.println("obtenerDispensadores AcessoJDBC");
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -126,7 +128,7 @@ public class AccesoJDBC implements I_Acceso_Datos {
 	public boolean guardarDepositos(HashMap<Integer, Deposito> depositos) {
 		boolean todoOK = true;
 
-		String query = "UPDATE depositos SET cantidad = '?' WHERE valor = ?";
+		String query = "UPDATE depositos SET cantidad = ? WHERE valor = ?";
 		PreparedStatement ps;
 
 		try {
@@ -146,11 +148,13 @@ public class AccesoJDBC implements I_Acceso_Datos {
 					ps.executeUpdate();
 
 				} catch (SQLException e) {
+					System.err.println("guardarDepositos() AcessoJDBC");
 					e.printStackTrace();
 					System.exit(0);
 				}
 			}
 		} catch (Exception e) {
+			System.err.println("guardarDepositos() AcessoJDBC");
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -162,7 +166,7 @@ public class AccesoJDBC implements I_Acceso_Datos {
 	public boolean guardarDispensadores(HashMap<String, Dispensador> dispensadores) {
 		boolean todoOK = true;
 
-		String query = "UPDATE dispensadores SET cantidad = '?' WHERE clave = '?'";
+		String query = "UPDATE dispensadores SET cantidad = ? WHERE clave = ?";
 		PreparedStatement ps;
 
 		try {
@@ -182,11 +186,13 @@ public class AccesoJDBC implements I_Acceso_Datos {
 					ps.executeUpdate();
 
 				} catch (SQLException e) {
+					System.err.println("guardarDispensadores() AcessoJDBC");
 					e.printStackTrace();
 					System.exit(0);
 				}
 			}
 		} catch (Exception e) {
+			System.err.println("guardarDispensadores() AcessoJDBC");
 			e.printStackTrace();
 			System.exit(0);
 		}
