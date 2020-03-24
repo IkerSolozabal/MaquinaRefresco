@@ -122,6 +122,7 @@ public class FicherosTexto implements I_Acceso_Datos {
 		} catch (IOException e) {
 			System.err.println("guardarDepositos() FicherosTexto");
 			e.printStackTrace();
+			todoOK = false;
 			System.exit(0);
 		}
 
@@ -160,6 +161,7 @@ public class FicherosTexto implements I_Acceso_Datos {
 		} catch (IOException e) {
 			System.err.println("guardarDepositos() FicherosTexto");
 			e.printStackTrace();
+			todoOK = false;
 			System.exit(0);
 		}
 

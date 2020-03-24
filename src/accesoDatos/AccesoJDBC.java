@@ -150,13 +150,16 @@ public class AccesoJDBC implements I_Acceso_Datos {
 				} catch (SQLException e) {
 					System.err.println("guardarDepositos() AcessoJDBC");
 					e.printStackTrace();
+					todoOK = false;
 					System.exit(0);
 				}
 			}
 		} catch (Exception e) {
 			System.err.println("guardarDepositos() AcessoJDBC");
 			e.printStackTrace();
+			todoOK = false;
 			System.exit(0);
+			
 		}
 
 		return todoOK;
@@ -188,12 +191,14 @@ public class AccesoJDBC implements I_Acceso_Datos {
 				} catch (SQLException e) {
 					System.err.println("guardarDispensadores() AcessoJDBC");
 					e.printStackTrace();
+					todoOK = false;
 					System.exit(0);
 				}
 			}
 		} catch (Exception e) {
 			System.err.println("guardarDispensadores() AcessoJDBC");
 			e.printStackTrace();
+			todoOK = false;
 			System.exit(0);
 		}
 
