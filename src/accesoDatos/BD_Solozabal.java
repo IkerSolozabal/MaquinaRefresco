@@ -15,12 +15,12 @@ import auxiliares.LeeProperties;
 import logicaRefrescos.Deposito;
 import logicaRefrescos.Dispensador;
 
-public class AccesoJDBC implements I_Acceso_Datos {
+public class BD_Solozabal implements I_Acceso_Datos {
 
 	private String driver, urlbd, user, password; // Datos de la conexion
 	private Connection conn1;
 
-	public AccesoJDBC() {
+	public BD_Solozabal() {
 		System.out.println("ACCESO A DATOS - Acceso JDBC");
 
 		try {

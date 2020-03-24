@@ -20,12 +20,12 @@ import logicaRefrescos.Dispensador;
  * Todas los accesos a datos implementan la interfaz de Datos
  */
 
-public class FicherosTexto implements I_Acceso_Datos {
+public class Fichero_Solozabal implements I_Acceso_Datos {
 
 	File fDis = new File("Ficheros\\datos\\dispensadores.txt"); // FicheroDispensadores
 	File fDep = new File("Ficheros\\datos\\depositos.txt"); // FicheroDepositos
 
-	public FicherosTexto() {
+	public Fichero_Solozabal() {
 		System.out.println("ACCESO A DATOS - FICHEROS DE TEXTO");
 	}
 
