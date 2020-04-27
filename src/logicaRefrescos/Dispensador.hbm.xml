@@ -14,7 +14,7 @@
 			<column name="clave" length="20" not-null="true" />
 		</property>
 		
-		<property name="nombre" type="string">
+		<property name="nombreProducto" type="string">
 			<column name="nombre"  length="30" not-null="true" />
 		</property>
 		

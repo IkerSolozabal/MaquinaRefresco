@@ -10,7 +10,7 @@
 			<generator class="increment" />
 		</id>
 		
-		<property name="nombre" type="string">
+		<property name="nombreMoneda" type="string">
 			<column name="nombre" length="30" not-null="true" />
 		</property>
 		
