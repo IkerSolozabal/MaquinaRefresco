@@ -1,7 +1,8 @@
 package accesoDatos;
 
+import java.io.IOException;
 import java.util.HashMap;
-
+import java.util.Map;
 import java.util.Scanner;
 
 import org.json.simple.JSONArray;
@@ -204,15 +205,99 @@ public class RemotoManager implements I_Acceso_Datos {
 	}
 
 	@Override
-	public boolean guardarDepositos(HashMap<Integer, Deposito> depositos) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean guardarDepositos(HashMap<Integer, Deposito> depositos) throws IOException {
+
+		JSONObject objDeposito = new JSONObject();
+		JSONObject objPeticion = new JSONObject();
+
+		for (Map.Entry<Integer, Deposito> entry : depositos.entrySet()) {
+			boolean todoCorrecto;
+			Deposito valueDeposito = entry.getValue();
+			Deposito deposito = new Deposito(valueDeposito.getNombreMoneda(), valueDeposito.getValor(),
+					valueDeposito.getCantidad());
+
+			objDeposito.put("nombre", deposito.getNombreMoneda());
+			objDeposito.put("valor", deposito.getValor());
+			objDeposito.put("cantidad", deposito.getCantidad());
+
+			// Tenemos el jugador como objeto JSON. Lo añadimos a una peticion
+			// Lo transformamos a string y llamamos al
+			// encargado de peticiones para que lo envie al PHP
+
+			objPeticion.put("peticion", "guardar");
+			objPeticion.put("depositoGuardar", objDeposito);
+
+			String json = objPeticion.toJSONString();
+
+			// System.out.println("Lanzamos peticion JSON para almacenar un elemento");
+
+			String url = BaseUrl;
+
+			// System.out.println("La url a la que lanzamos la petición es " + url);
+			// System.out.println("El json que enviamos es: ");
+			// System.out.println(json);
+			// System.exit(-1);
+
+			String response = encargadoPeticiones.depositoRequest(depositosUrl, json, "PUT");
+
+			JSONObject respuesta = (JSONObject) JSONValue.parse(response.toString());
+			String estado = (String) respuesta.get("estado");
+
+			if (estado.equals("ok")) {
+				todoCorrecto = true;
+			} else {
+				todoCorrecto = false;
+			}
+		}
+
+		return true;
 	}
 
 	@Override
-	public boolean guardarDispensadores(HashMap<String, Dispensador> dispensadores) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean guardarDispensadores(HashMap<String, Dispensador> dispensadores) throws IOException {
+		JSONObject objDispesador = new JSONObject();
+		JSONObject objPeticion = new JSONObject();
+
+		for (Map.Entry<String, Dispensador> entry : dispensadores.entrySet()) {
+			boolean todoCorrecto;
+			Dispensador valueDispensador = entry.getValue();
+			Dispensador dispensador = new Dispensador(valueDispensador.getClave(), valueDispensador.getNombreProducto(),
+					valueDispensador.getPrecio(), valueDispensador.getCantidad());
+
+			objDispesador.put("clave", dispensador.getClave());
+			objDispesador.put("nombre", dispensador.getNombreProducto());
+			objDispesador.put("precio", dispensador.getPrecio());
+			objDispesador.put("cantidad", dispensador.getCantidad());
+
+			// Tenemos el jugador como objeto JSON. Lo añadimos a una peticion
+			// Lo transformamos a string y llamamos al
+			// encargado de peticiones para que lo envie al PHP
+
+			objPeticion.put("peticion", "guardar");
+			objPeticion.put("dispensadorGuardar", objDispesador);
+
+			String json = objPeticion.toJSONString();
+
+			// System.out.println("Lanzamos peticion JSON para almacenar un elemento");
+
+			// System.out.println("La url a la que lanzamos la petición es " + url);
+			// System.out.println("El json que enviamos es: ");
+			// System.out.println(json);
+			// System.exit(-1);
+
+			String response = encargadoPeticiones.dispensadorRequest(dispensadoresUrl, json, "PUT");
+			JSONObject respuesta = (JSONObject) JSONValue.parse(response.toString());
+			String estado = (String) respuesta.get("estado");
+
+			if (estado.equals("ok")) {
+				todoCorrecto = true;
+			} else {
+				todoCorrecto = false;
+			}
+		}
+
+		return true;
+
 	}
 
 }

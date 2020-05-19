@@ -1,5 +1,6 @@
 package controlador;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -69,7 +70,7 @@ public class Controlador {
 
 	// Cuando se llame a este método es que se ha finalizado la ejecucian de la maquina
 	// Antes de salir almacenamos los datos
-	public void finalizar(){
+	public void finalizar() throws IOException{
 		
 		boolean guardadosDep;
 		boolean guardadosDis;

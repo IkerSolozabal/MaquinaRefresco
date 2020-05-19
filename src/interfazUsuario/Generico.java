@@ -1,5 +1,6 @@
 package interfazUsuario;
 
+import java.io.IOException;
 import java.util.Scanner;
 import controlador.Controlador;
 import maquinas.Maquina;
@@ -33,7 +34,7 @@ public abstract class Generico {
 		miScanner = scanner;
 	}
 	
-	protected void finalizarMaquina(){
+	protected void finalizarMaquina() throws IOException{
 		miControlador.finalizar();
 	}
 	

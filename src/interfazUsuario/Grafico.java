@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -42,7 +43,12 @@ public class Grafico extends Generico implements ActionListener{
 		ventana.addWindowListener( new WindowAdapter() {
 			public void windowClosing( WindowEvent evt ) {
 				System.out.println("CERRANDO");
-				finalizarMaquina();
+				try {
+					finalizarMaquina();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}); 	
 		
