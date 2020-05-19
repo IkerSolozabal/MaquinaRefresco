@@ -35,7 +35,7 @@ public class RemotoManager implements I_Acceso_Datos {
 
 		try {
 
-			System.out.println("La url a la que lanzamos la petición es " + depositosUrl); //
+			//System.out.println("La url a la que lanzamos la petición es " + depositosUrl); //
 			// Traza para pruebas
 
 			String response = encargadoPeticiones.depositoRequest(depositosUrl, "Null", "GET");
@@ -122,7 +122,7 @@ public class RemotoManager implements I_Acceso_Datos {
 
 		try {
 
-			System.out.println("La url a la que lanzamos la petición es " + dispensadoresUrl); //
+			//System.out.println("La url a la que lanzamos la petición es " + dispensadoresUrl); //
 			// Traza para pruebas
 
 			String response = encargadoPeticiones.dispensadorRequest(dispensadoresUrl, "Null", "GET");
