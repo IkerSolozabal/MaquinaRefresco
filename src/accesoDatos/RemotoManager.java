@@ -35,7 +35,7 @@ public class RemotoManager implements I_Acceso_Datos {
 
 		try {
 
-			// System.out.println("La url a la que lanzamos la petición es " + url); //
+			System.out.println("La url a la que lanzamos la petición es " + depositosUrl); //
 			// Traza para pruebas
 
 			String response = encargadoPeticiones.depositoRequest(depositosUrl, "Null", "GET");
@@ -50,7 +50,7 @@ public class RemotoManager implements I_Acceso_Datos {
 			if (respuesta == null) { // Si hay algún error de parseo (json
 										// incorrecto porque hay algún caracter
 										// raro, etc.) la respuesta será null
-				// System.out.println("El json recibido no es correcto. Finaliza la ejecución");
+				 System.out.println("El json recibido no es correcto. Finaliza la ejecución");
 				System.exit(-1);
 			} else { // El JSON recibido es correcto
 				// Sera "ok" si todo ha ido bien o "error" si hay algún problema
@@ -122,7 +122,7 @@ public class RemotoManager implements I_Acceso_Datos {
 
 		try {
 
-			// System.out.println("La url a la que lanzamos la petición es " + url); //
+			System.out.println("La url a la que lanzamos la petición es " + dispensadoresUrl); //
 			// Traza para pruebas
 
 			String response = encargadoPeticiones.dispensadorRequest(dispensadoresUrl, "Null", "GET");

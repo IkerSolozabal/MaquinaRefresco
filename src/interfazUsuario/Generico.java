@@ -34,8 +34,13 @@ public abstract class Generico {
 		miScanner = scanner;
 	}
 	
-	protected void finalizarMaquina() throws IOException{
-		miControlador.finalizar();
+	protected void finalizarMaquina(){
+		try {
+			miControlador.finalizar();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	protected void insertarMoneda(int op){

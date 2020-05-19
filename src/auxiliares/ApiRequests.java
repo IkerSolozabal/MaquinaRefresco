@@ -13,45 +13,50 @@ public class ApiRequests {
 		client = new OkHttpClient();
 	}
 
+	public String depositoRequest(String url, String json, String metodo) {
+		try {
+			if (metodo.equalsIgnoreCase("GET")) {
 
-	public String depositoRequest(String url, String json, String metodo) throws IOException {
+				Request request = new Request.Builder().url(url).get().build();
+				Response response = client.newCall(request).execute();
 
-		if (metodo.equalsIgnoreCase("GET")) {
+				return response.body().string();
+			}
 
-			Request request = new Request.Builder().url(url).get().build();
-			Response response = client.newCall(request).execute();
+			if (metodo.equalsIgnoreCase("PUT")) {
+				RequestBody body = RequestBody.create(JSON, json);
+				Request request = new Request.Builder().url(url).put(body).build();
+				Response response = client.newCall(request).execute();
 
-			return response.body().string();
-		}
-
-		if (metodo.equalsIgnoreCase("PUT")) {
-			RequestBody body = RequestBody.create(JSON, json);
-			Request request = new Request.Builder().url(url).put(body).build();
-			Response response = client.newCall(request).execute();
-
-			return response.body().string();
+				return response.body().string();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 		return null;
 
 	}
 
-	public String dispensadorRequest(String url, String json, String metodo) throws IOException {
+	public String dispensadorRequest(String url, String json, String metodo) {
+		try {
+			if (metodo.equalsIgnoreCase("GET")) {
 
-		if (metodo.equalsIgnoreCase("GET")) {
+				Request request = new Request.Builder().url(url).get().build();
+				Response response = client.newCall(request).execute();
 
-			Request request = new Request.Builder().url(url).get().build();
-			Response response = client.newCall(request).execute();
+				return response.body().string();
+			}
 
-			return response.body().string();
-		}
+			if (metodo.equalsIgnoreCase("PUT")) {
+				RequestBody body = RequestBody.create(JSON, json);
+				Request request = new Request.Builder().url(url).put(body).build();
+				Response response = client.newCall(request).execute();
 
-		if (metodo.equalsIgnoreCase("PUT")) {
-			RequestBody body = RequestBody.create(JSON, json);
-			Request request = new Request.Builder().url(url).put(body).build();
-			Response response = client.newCall(request).execute();
-
-			return response.body().string();
+				return response.body().string();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 		return null;

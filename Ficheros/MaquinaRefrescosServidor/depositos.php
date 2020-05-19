@@ -217,7 +217,7 @@ function modificarUno() {
             $valor = $deposito['valor'];
             $cantidad= $deposito['cantidad'];
 
-            $query  = "UPDATE depositos set cantidad = '$cantidad' WHERE valor = '$valor'"
+            $query  = "UPDATE depositos set cantidad = '$cantidad' WHERE valor = '$valor'";
 
 
             $result = $conn->query ( $query );

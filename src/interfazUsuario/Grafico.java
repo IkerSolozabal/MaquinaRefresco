@@ -43,12 +43,7 @@ public class Grafico extends Generico implements ActionListener{
 		ventana.addWindowListener( new WindowAdapter() {
 			public void windowClosing( WindowEvent evt ) {
 				System.out.println("CERRANDO");
-				try {
-					finalizarMaquina();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				finalizarMaquina();
 			}
 		}); 	
 		
